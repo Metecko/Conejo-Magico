@@ -2,12 +2,12 @@ class_name Enemigo
 extends KinematicBody2D
 
 signal spawneado(entidad)
-
-var modo: int setget set_modo
+signal saliendo_escena(entidad)
 
 func _ready() -> void:
-	get_parent().connect("spawneado", self, "_enemigo_spawn")
+	connect("spawneado", get_parent(), "_enemigo_spawn")
+	connect("saliendo_escena", get_parent(), "_enemigo_saliendo")
 	emit_signal("spawneado", self)
-
-func set_modo(nuevo_modo: int):
-	modo = nuevo_modo
+	
+func _exit_tree() -> void:
+	emit_signal("saliendo_escena", self)

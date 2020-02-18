@@ -16,7 +16,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+vida_inicial = 100
 rapidez_inicial = 120
+danio_base_inicial = 40
+precision_inicial = 0.4
 
 [node name="EstadoControlador" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -57,5 +60,9 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
-[connection signal="atacando" from="." to="EstadoControlador/Atacando" method="atacar"]
+
+[node name="Rayo" type="RayCast2D" parent="."]
+enabled = true
+collision_mask = 2
+[connection signal="atacando" from="." to="EstadoControlador/Atacando" method="_on_atacando"]
 [connection signal="timeout" from="EstadoControlador/Dasheando/TimerDash" to="EstadoControlador/Dasheando" method="_on_TimerDash_timeout"]

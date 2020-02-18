@@ -6,6 +6,7 @@ signal atacando(tipo)
 export(int) var vida_inicial
 export(int) var rapidez_inicial
 export(int) var danio_base_inicial
+export(float) var precision_inicial
 var movedir:= Vector2(0,0) setget ,get_movedir
 
 func _ready():
@@ -42,3 +43,4 @@ func inicializar() -> void:
 	JugadorStats.set_rapidez(rapidez_inicial) 
 	JugadorStats.set_vida(vida_inicial)
 	JugadorStats.set_danio_base(danio_base_inicial)
+	JugadorStats.set_precision(precision_inicial)
