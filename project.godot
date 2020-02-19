@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Estado",
+"class": "AgresivoCreep",
+"language": "GDScript",
+"path": "res://entidades/enemigos/creep/estados/Agresivo.gd"
+}, {
+"base": "Estado",
+"class": "AlertaCreep",
+"language": "GDScript",
+"path": "res://entidades/enemigos/creep/estados/Alerta.gd"
+}, {
 "base": "Enemigo",
 "class": "Creep",
 "language": "GDScript",
@@ -45,16 +55,18 @@ _global_script_classes=[ {
 "path": "res://entidades/enemigos/Mira.gd"
 }, {
 "base": "Estado",
+"class": "PasivoCreep",
+"language": "GDScript",
+"path": "res://entidades/enemigos/creep/estados/Pasivo.gd"
+}, {
+"base": "Estado",
 "class": "Quieto",
 "language": "GDScript",
 "path": "res://entidades/jugador/estados/Quieto.gd"
-}, {
-"base": "Estado",
-"class": "QuietoCreep",
-"language": "GDScript",
-"path": "res://entidades/enemigos/creep/estados/Quieto.gd"
 } ]
 _global_script_class_icons={
+"AgresivoCreep": "",
+"AlertaCreep": "",
 "Creep": "",
 "Enemigo": "",
 "Enemigos": "",
@@ -62,8 +74,8 @@ _global_script_class_icons={
 "Estado": "",
 "Jugador": "",
 "Mira": "",
-"Quieto": "",
-"QuietoCreep": ""
+"PasivoCreep": "",
+"Quieto": ""
 }
 
 [application]
@@ -133,7 +145,8 @@ clic_derecho={
 [layer_names]
 
 2d_physics/layer_1="player"
-2d_physics/layer_2="target"
+2d_physics/layer_2="enemigo"
+2d_physics/layer_3="obstaculo"
 
 [rendering]
 

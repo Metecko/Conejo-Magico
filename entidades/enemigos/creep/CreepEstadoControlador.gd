@@ -2,8 +2,11 @@ extends Node
 
 export(NodePath) var ESTADO_INICIAL
 
+var target
+var puede_moverse: bool = false
+
 onready var estados_mapa = {
-		"quieto": $Quieto,
+		"pasivo": $Pasivo,
 		"alerta": $Alerta,
 		"agresivo": $Agresivo,
 		"golpeado": $Golpeado,
@@ -28,6 +31,7 @@ func _ready() -> void:
 # warning-ignore:unused_argument
 func _physics_process(delta: float) -> void:
 	estado_actual.actualizar()
+	owner.get_node("Label").text = estado_actual.name
 
 func _cambiar_estado(estado: String):
 	if not _activo:

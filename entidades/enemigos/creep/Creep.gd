@@ -11,7 +11,7 @@ func get_movedir() -> Vector2:
 	return movedir
 
 func _ready() -> void:
-	$Visibilidad/CollisionShape2D.shape.radius = radio_deteccion
+	$Vision/CollisionShape2D.shape.radius = radio_deteccion
 	$ReaccionTimer.wait_time = tiempo_reaccion
 	position = get_global_mouse_position()
 
