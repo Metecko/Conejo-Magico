@@ -1,9 +1,9 @@
 class_name Mira
 extends Sprite
 
-export(int) var omega = 10
+export(int) var omega = 7
 export(int) var amplitud = 20
-onready var desfase: float = PI/8
+onready var desfase: float = PI/7
 var modo: int setget set_modo, get_modo
 var punteria: float setget , get_punteria
 var theta: float
@@ -25,7 +25,7 @@ func oscilar():
 	position.x = amplitud*punteria
 
 static func modo_aleatorio() -> int:
-	return randi() % 8 + 1
+	return randi() % 7 + 1
 
 func get_punteria():
 	return punteria

@@ -28,6 +28,7 @@ func apuntar() -> bool:
 		acertado = true
 		print("buena chunteria")
 	
+	punteria = 1000.0
 	return acertado
 
 func disparar() -> void:

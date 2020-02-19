@@ -34,6 +34,6 @@ func _enemigo_saliendo(entidad) -> void:
 
 #borrar
 func instancia_enemigo():
-	if enemigos.size() < 8:
+	if enemigos.size() < 7:
 		if Input.is_action_just_pressed("clic_derecho"):
 			self.add_child(enemigo.instance())
