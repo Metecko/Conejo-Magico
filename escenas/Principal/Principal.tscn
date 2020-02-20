@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://escenas/Principal/Navigation.gd" type="Script" id=1]
+[ext_resource path="res://entidades/obstaculos/Obstaculo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entidades/jugador/Jugador.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entidades/enemigos/Enemigos.tscn" type="PackedScene" id=4]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 14.8421, 30.1053, 425.368, 14.3158, 244.316, 79.5789, 207.474, 79.5789, 308.526, 173.263, 449.579, 293.263, 307.474, 212.211, 243.263, 146.947, 170.632, 175.368, 206.421, 143.789, 15.8947, 294.316, 170.632, 208 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 1, 5, 6 ), PoolIntArray( 2, 1, 4, 7 ), PoolIntArray( 7, 4, 8, 9 ), PoolIntArray( 6, 5, 10, 11 ), PoolIntArray( 11, 10, 0, 8 ), PoolIntArray( 8, 0, 3, 9 ) ]
+outlines = [ PoolVector2Array( 206.421, 143.789, 207.474, 79.5789, 244.316, 79.5789, 243.263, 146.947 ), PoolVector2Array( 170.632, 208, 170.632, 175.368, 308.526, 173.263, 307.474, 212.211 ), PoolVector2Array( 14.8421, 30.1053, 15.8947, 294.316, 449.579, 293.263, 425.368, 14.3158 ) ]
+
+[node name="Navigation" type="Navigation2D"]
+script = ExtResource( 1 )
+
+[node name="Jugador" parent="." instance=ExtResource( 3 )]
+
+[node name="Enemigos" parent="." instance=ExtResource( 4 )]
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 224.2, 130.15 )
+collision_mask = 4
+
+[node name="KinematicBody2D" parent="KinematicBody2D" instance=ExtResource( 2 )]
+position = Vector2( 0, -31.3501 )
+
+[node name="KinematicBody2D2" parent="KinematicBody2D" instance=ExtResource( 2 )]
+position = Vector2( -0.38002, 62.985 )
+
+[node name="KinematicBody2D" parent="KinematicBody2D/KinematicBody2D2" instance=ExtResource( 2 )]
+position = Vector2( 32.6579, 0 )
+
+[node name="KinematicBody2D" parent="KinematicBody2D/KinematicBody2D2/KinematicBody2D" instance=ExtResource( 2 )]
+position = Vector2( 32.6316, 0 )
+
+[node name="KinematicBody2D2" parent="KinematicBody2D/KinematicBody2D2" instance=ExtResource( 2 )]
+position = Vector2( -32.6316, 0 )
+
+[node name="NavMesh" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )

@@ -12,6 +12,7 @@
 
 [node name="Jugador" type="KinematicBody2D"]
 position = Vector2( 107, 39 )
+collision_mask = 6
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true

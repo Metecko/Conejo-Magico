@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Conejo Detonao"
-run/main_scene="res://escenas/Principal.tscn"
+run/main_scene="res://escenas/Principal/Principal.tscn"
 config/icon="res://icon.png"
 
 [autoload]

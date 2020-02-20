@@ -13,8 +13,11 @@ onready var estados_mapa = {
 		"atacando": $Atacando,
 	}
 	
-var estado_actual
+var estado_actual setget ,get_estado_actual
 var _activo: = false setget set_activo
+
+func get_estado_actual() -> Node:
+	return estado_actual
 
 func set_activo(value):
 	_activo = value
