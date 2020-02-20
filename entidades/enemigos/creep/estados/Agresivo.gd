@@ -6,7 +6,7 @@ var observado
 var es_jugador = false
 
 func actualizar():
-	
+	print(mirar_target())
 	if mirar_target():
 		return
 	else:
@@ -18,5 +18,7 @@ func mirar_target() -> bool:
 	observado = perspectiva.get_collider()
 	if observado.name == "Jugador":
 		es_jugador = true
+	else:
+		es_jugador = false
 	
 	return es_jugador

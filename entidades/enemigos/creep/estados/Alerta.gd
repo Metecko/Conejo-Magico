@@ -17,5 +17,7 @@ func mirar_target() -> bool:
 	observado = perspectiva.get_collider()
 	if observado.name == "Jugador":
 		es_jugador = true
+	else:
+		es_jugador = false
 	
 	return es_jugador
