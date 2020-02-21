@@ -11,17 +11,21 @@
 
 [sub_resource type="CircleShape2D" id=1]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=2]
+radius = 15.4395
 
 [node name="Creep" type="KinematicBody2D"]
 position = Vector2( 295.786, 111.521 )
 collision_layer = 2
-collision_mask = 2
+collision_mask = 6
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
 }
-radio_deteccion = 120
+rapidez = 40
+radio_deteccion = 300
+tiempo_reaccion = 0.5
+tiempo_atrapado = 0.1
 
 [node name="EstadoControlador" type="Node" parent="."]
 script = ExtResource( 5 )
@@ -29,16 +33,25 @@ ESTADO_INICIAL = NodePath("Pasivo")
 
 [node name="Pasivo" type="Node" parent="EstadoControlador"]
 script = ExtResource( 6 )
+multi_rapidez = 2
 
 [node name="Alerta" type="Node" parent="EstadoControlador"]
 script = ExtResource( 7 )
 
 [node name="Agresivo" type="Node" parent="EstadoControlador"]
 script = ExtResource( 8 )
+multi_rapidez = 2
+
+[node name="ReaccionTimer" type="Timer" parent="EstadoControlador/Agresivo"]
+one_shot = true
 
 [node name="Golpeado" type="Node" parent="EstadoControlador"]
 
 [node name="Atacando" type="Node" parent="EstadoControlador"]
+
+[node name="AtrapadoTimer" type="Timer" parent="EstadoControlador"]
+wait_time = 0.2
+one_shot = true
 
 [node name="Label" type="Label" parent="."]
 margin_left = -18.6559
@@ -63,13 +76,18 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Vision"]
 shape = SubResource( 1 )
 
-[node name="ReaccionTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
 [node name="RayCastVision" type="RayCast2D" parent="."]
 enabled = true
-collision_mask = 5
+
+[node name="Label2" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="EstadoControlador/Agresivo/ReaccionTimer" to="EstadoControlador/Agresivo" method="_on_ReaccionTimer_timeout"]
 [connection signal="body_entered" from="Vision" to="EstadoControlador/Pasivo" method="_on_Vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="EstadoControlador/Pasivo" method="_on_Vision_body_exited"]

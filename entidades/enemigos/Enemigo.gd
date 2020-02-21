@@ -2,9 +2,18 @@ class_name Enemigo
 extends KinematicBody2D
 
 signal spawneado(entidad)
+export(int) var rapidez setget set_rapidez, get_rapidez
 signal saliendo_escena(entidad)
-
 var path: PoolVector2Array = [] setget set_path
+var objeto_colisionado setget ,get_objeto_colisionado
+
+func set_rapidez(nueva_rapidez: int) -> void:
+	rapidez = nueva_rapidez
+func get_rapidez() -> int:
+	return rapidez
+	
+func get_objeto_colisionado():
+	return objeto_colisionado
 
 func set_path(nuevo_path: PoolVector2Array) -> void:
 	path = nuevo_path

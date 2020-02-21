@@ -9,6 +9,7 @@ func _ready():
 func _process(delta) -> void:
 	enemigos = $Enemigos.get_children()
 	path_para_enemigos_agresivos()
+	path_para_enemigos_pasivos()
 
 func _physics_process(delta) -> void:
 	jugador_position = $Jugador.position
@@ -20,4 +21,11 @@ func path_para_enemigos_agresivos():
 			var nuevo_path = get_simple_path(enemigo.position, jugador_position)
 			nuevo_path.remove(0)
 			enemigo.set_path(nuevo_path)
-			
+
+func path_para_enemigos_pasivos():
+	for enemigo in enemigos:
+		var estado_controlador = enemigo.get_node("EstadoControlador")
+		if estado_controlador.get_estado_actual().name == "Pasivo":
+			var nuevo_path = get_simple_path(enemigo.position, enemigo.get_position_inicial())
+			nuevo_path.remove(0)
+			enemigo.set_path(nuevo_path)
