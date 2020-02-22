@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://entidades/enemigos/creep/estados/Alerta.gd"
 }, {
-"base": "Node2D",
+"base": "Area2D",
 "class": "ControlPuntosPath",
 "language": "GDScript",
 "path": "res://escenas/ControlPuntosPath.gd"

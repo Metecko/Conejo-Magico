@@ -1,8 +1,10 @@
-extends Node2D
+extends Area2D
 class_name ControlPuntosPath
 
+func set_radio_enemigo(radio: int) -> void:
+	$CollisionShape2D.shape.radius = radio
 
-
-	
-func _process(delta):
-	print($Area2D.get_overlapping_bodies())
+func print_colisiones() -> String:
+	yield()
+	queue_free()
+	return "peo"
